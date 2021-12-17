@@ -22,11 +22,19 @@ namespace RayTracer
         public static readonly Vector3 One = new Vector3(1, 1, 1);
         public static readonly Vector3 Zero = new Vector3(0, 0, 0);
 
+        public double MagnitudeSquared
+        {
+            get
+            {
+                return X * X + Y * Y + Z * Z;
+            }
+        }
+
         public double Magnitude
         {
             get
             {
-                return Math.Sqrt(X * X + Y * Y + Z * Z);
+                return Math.Sqrt(MagnitudeSquared);
             }
         }
 

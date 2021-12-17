@@ -24,7 +24,13 @@ namespace RayTracer
                     throw new Exception($"Unable to parse command line arguments: '{Environment.CommandLine}'");
                 }
 
-                string imageText = PpmImage.GenerateImage(256, 256);
+                int width = 256;
+                int height = 256;
+
+                ImageGenerator generator = new ImageGenerator();
+                Color[] pixels = generator.GenerateGradientImage(width, height);
+
+                string imageText = PpmImage.CreatePpmImage(pixels, 256, 256);
                 File.WriteAllText(@"C:\Users\hipto\Desktop\image.ppm", imageText);
 
                 exitCode = SuccessExitCode;

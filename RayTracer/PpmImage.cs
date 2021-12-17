@@ -20,7 +20,7 @@ namespace RayTracer
     //  0   0   0  # black
     public class PpmImage
     {
-        public static string GenerateImage(int width, int height)
+        public static string CreatePpmImage(Color[] pixels, int width, int height)
         {
             StringBuilder builder = new StringBuilder();
 
@@ -28,18 +28,12 @@ namespace RayTracer
             builder.AppendLine($"{width} {height}");
             builder.AppendLine($"255");
 
-            for (int y = height - 1; y >= 0;  y--)
+            for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    double r = x / (width - 1d);
-                    double g = y / (height - 1d);
-                    double b = 0.25;
-
-                    int ir = (int)(r * 255.999);
-                    int ig = (int)(g * 255.999);
-                    int ib = (int)(b * 255.999);
-                    builder.AppendLine($"{ir,4} {ig,4} {ib,4}");
+                    int i = y * width + x;
+                    builder.AppendLine($"{pixels[i].R,4} {pixels[i].G,4} {pixels[i].B,4}");
                 }
             }
 
