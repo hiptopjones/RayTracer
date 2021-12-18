@@ -11,6 +11,11 @@ namespace RayTracer
         public Point3 Origin { get; set; }
         public Vector3 Direction { get; set; }
 
+        public Ray()
+        {
+
+        }
+
         public Ray(Point3 origin, Vector3 direction)
         {
             Origin = origin;

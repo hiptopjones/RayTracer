@@ -51,11 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
     <Compile Include="Color32.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="CommandLineOptions.cs" />
     <Compile Include="IHittable.cs" />
     <Compile Include="ImageRendererChapter2.cs" />
+    <Compile Include="ImageRendererChapter7.cs" />
     <Compile Include="ImageRendererChapter6.cs" />
     <Compile Include="ImageRendererChapter5.cs" />
     <Compile Include="ImageRendererChapter4.cs" />
