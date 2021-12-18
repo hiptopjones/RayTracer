@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Color32.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="CommandLineOptions.cs" />
     <Compile Include="ImageGenerator.cs" />

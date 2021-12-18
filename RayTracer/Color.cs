@@ -78,9 +78,23 @@ namespace RayTracer
             };
         }
 
-        public Color Lerp(Color start, Color end, double percent)
+        public static Color Lerp(Color start, Color end, double percent)
         {
             return start + (end - start) * percent;
+        }
+
+        public Color32 ToColor32()
+        {
+            // TODO: Clamp members to 0-1 first?
+            Color32 color32 = new Color32
+            {
+                R = (byte)(R * 255),
+                G = (byte)(G * 255),
+                B = (byte)(B * 255),
+                A = (byte)(A * 255)
+            };
+
+            return color32;
         }
 
         public override string ToString()

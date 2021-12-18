@@ -52,9 +52,9 @@ namespace RayTracer
             };
         }
 
-        public static Point3 operator -(Point3 a, Point3 b)
+        public static Vector3 operator -(Point3 a, Point3 b)
         {
-            return new Point3
+            return new Vector3
             {
                 X = a.X - b.X,
                 Y = a.Y - b.Y,
@@ -82,6 +82,7 @@ namespace RayTracer
             };
         }
 
+        // TODO: Is this the right place to define operators that cross types?
 
         public static Point3 operator +(Point3 p, Vector3 v)
         {
@@ -90,6 +91,26 @@ namespace RayTracer
                 X = p.X + v.X,
                 Y = p.Y + v.Y,
                 Z = p.Z + v.Z
+            };
+        }
+
+        public static Point3 operator +(Vector3 p, Point3 v)
+        {
+            return new Point3
+            {
+                X = p.X + v.X,
+                Y = p.Y + v.Y,
+                Z = p.Z + v.Z
+            };
+        }
+
+        public static Point3 operator -(Point3 p, Vector3 v)
+        {
+            return new Point3
+            {
+                X = p.X - v.X,
+                Y = p.Y - v.Y,
+                Z = p.Z - v.Z
             };
         }
 

@@ -115,6 +115,16 @@ namespace RayTracer
             };
         }
 
+        public static Vector3 operator *(double c, Vector3 a)
+        {
+            return new Vector3
+            {
+                X = c * a.X,
+                Y = c * a.Y,
+                Z = c * a.Z
+            };
+        }
+
         public static Vector3 operator /(Vector3 a, double c)
         {
             return new Vector3

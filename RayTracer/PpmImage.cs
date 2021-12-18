@@ -28,12 +28,14 @@ namespace RayTracer
             builder.AppendLine($"{width} {height}");
             builder.AppendLine($"255");
 
-            for (int y = 0; y < height; y++)
+            for (int y = height - 1; y >= 0; y--)
             {
                 for (int x = 0; x < width; x++)
                 {
                     int i = y * width + x;
-                    builder.AppendLine($"{pixels[i].R,4} {pixels[i].G,4} {pixels[i].B,4}");
+
+                    Color32 color32 = pixels[i].ToColor32();
+                    builder.AppendLine($"{color32.R,4} {color32.G,4} {color32.B,4}");
                 }
             }
 
