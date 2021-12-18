@@ -6,31 +6,9 @@ using System.Threading.Tasks;
 
 namespace RayTracer
 {
-    class ImageGenerator
+    // Ray Tracing In One Weekend, Chapter 4
+    class ImageRendererChapter4
     {
-        // Ray Tracing In One Weekend, Chapter 2
-        public Color[] GenerateGradientImage(int imageWidth, int imageHeight)
-        {
-            Color[] pixels = new Color[imageWidth * imageHeight];
-
-            for (int y = imageHeight - 1; y >= 0; y--)
-            {
-                for (int x = 0; x < imageWidth; x++)
-                {
-                    Color color = new Color
-                    {
-                        R = (double)x / (imageWidth - 1),
-                        G = (double)y / (imageHeight - 1),
-                        B = 0.25
-                    };
-
-                    pixels[y * imageWidth + x] = color;
-                }
-            }
-
-            return pixels;
-        }
-
         // Returns the color of the background (a simple gradient).
         public Color GetRayColor(Ray ray)
         {
@@ -45,8 +23,7 @@ namespace RayTracer
             return currentColor;
         }
 
-        // Ray Tracing In One Weekend, Chapter 4
-        public Color[] GenerateRenderedImage(int imageWidth, int imageHeight)
+        public Color[] GenerateImage(int imageWidth, int imageHeight)
         {
             // Image
             double aspectRatio = (double)imageWidth / imageHeight;
