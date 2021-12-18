@@ -71,6 +71,17 @@ namespace RayTracer
             };
         }
 
+        public static Color operator *(double c, Color a)
+        {
+            return new Color
+            {
+                R = c * a.R,
+                G = c * a.G,
+                B = c * a.B,
+                A = c * a.A
+            };
+        }
+
         public static Color operator /(Color a, double c)
         {
             return new Color

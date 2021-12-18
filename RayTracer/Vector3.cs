@@ -159,6 +159,21 @@ namespace RayTracer
             return u.X * v.X + u.Y * v.Y + u.Z * v.Z;
         }
 
+        public static Vector3 Normalize(Vector3 v)
+        {
+            return v.Normalized;
+        }
+
+        public static double GetMagnitude(Vector3 v)
+        {
+            return v.Magnitude;
+        }
+
+        public static double GetMagnitudeSquared(Vector3 v)
+        {
+            return v.MagnitudeSquared;
+        }
+
         public override string ToString()
         {
             return $"V[ {X:0.000}, {Y:0.000}, {Z:0.000} ]";
