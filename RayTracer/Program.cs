@@ -28,7 +28,7 @@ namespace RayTracer
                 int imageWidth = 400;
                 int imageHeight = (int)(imageWidth / aspectRatio);
 
-                ImageRendererChapter4 generator = new ImageRendererChapter4();
+                ImageRendererChapter5 generator = new ImageRendererChapter5();
                 Color[] pixels = generator.GenerateImage(imageWidth, imageHeight);
 
                 string imageText = PpmImage.CreatePpmImage(pixels, imageWidth, imageHeight);

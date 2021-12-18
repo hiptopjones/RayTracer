@@ -13,6 +13,10 @@ namespace RayTracer
         public double B { get; set; }
         public double A { get; set; }
 
+        public static Color Red = new Color(1, 0, 0);
+        public static Color Green = new Color(0, 1, 0);
+        public static Color Blue = new Color(0, 0, 1);
+
         public Color(double r, double g, double b)
             : this(r, g, b, 0)
         {

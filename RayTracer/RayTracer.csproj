@@ -55,6 +55,7 @@
     <Compile Include="Color.cs" />
     <Compile Include="CommandLineOptions.cs" />
     <Compile Include="ImageRendererChapter2.cs" />
+    <Compile Include="ImageRendererChapter5.cs" />
     <Compile Include="ImageRendererChapter4.cs" />
     <Compile Include="PpmImage.cs" />
     <Compile Include="Program.cs" />
