@@ -10,6 +10,7 @@ namespace RayTracer
     {
         public Point3 Position { get; set; }
         public Vector3 Normal { get; set; }
+        public Material Material { get; set; }
         public double Distance { get; set; }
         public bool IsFrontFace { get; set; }
 

@@ -174,6 +174,12 @@ namespace RayTracer
             return v.MagnitudeSquared;
         }
 
+        public bool IsNearZero()
+        {
+            double e = 1e-8;
+            return Math.Abs(X) < e && Math.Abs(Y) < e && Math.Abs(Z) < e;
+        }
+
         public override string ToString()
         {
             return $"V[ {X:0.000}, {Y:0.000}, {Z:0.000} ]";

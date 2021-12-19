@@ -10,6 +10,7 @@ namespace RayTracer
     {
         public Point3 Center { get; set; }
         public double Radius { get; set; }
+        public Material Material { get; set; }
 
         public Sphere()
         {
@@ -17,9 +18,15 @@ namespace RayTracer
         }
 
         public Sphere(Point3 center, double radius)
+            : this(center, radius, null)
+        {
+        }
+
+        public Sphere(Point3 center, double radius, Material material)
         {
             Center = center;
             Radius = radius;
+            Material = material;
         }
 
         public bool Hit(Ray ray, double minDistance, double maxDistance, out Hit hit)
@@ -63,6 +70,7 @@ namespace RayTracer
             hit = new Hit();
             hit.Distance = distance;
             hit.Position = ray.GetPosition(distance);
+            hit.Material = Material;
             hit.SetFaceNormal(ray, Vector3.Normalize(hit.Position - Center));
 
             return true;

@@ -86,6 +86,19 @@ namespace RayTracer
             };
         }
 
+        // TODO: What is the proper name for this operation?
+        public static Color operator *(Color a, Color b)
+        {
+            return new Color
+            {
+                R = a.R * b.R,
+                G = a.G * b.G,
+                B = a.B * b.B,
+                A = a.A * b.A
+            };
+        }
+
+
         public static Color operator /(Color a, double c)
         {
             return new Color
