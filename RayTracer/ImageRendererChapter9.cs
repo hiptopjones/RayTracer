@@ -50,8 +50,8 @@ namespace RayTracer
         {
             // Image
             double aspectRatio = (double)imageWidth / imageHeight;
-            int samplesPerPixel = 20;
-            int maxBounceDepth = 20;
+            int samplesPerPixel = 100;
+            int maxBounceDepth = 50;
 
             // World
 
@@ -66,12 +66,12 @@ namespace RayTracer
             Material leftMaterial = new MetalMaterial
             {
                 Albedo = new Color(0.8, 0.8, 0.8),
-                Fuzz = 0.3
+                Fuzz = 0
             };
             Material rightMaterial = new MetalMaterial
             {
                 Albedo = new Color(0.8, 0.6, 0.2),
-                Fuzz = 1.0
+                Fuzz = 0
             };
 
             HittableList world = new HittableList
