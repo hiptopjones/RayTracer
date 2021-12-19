@@ -57,6 +57,7 @@
     <Compile Include="CommandLineOptions.cs" />
     <Compile Include="IHittable.cs" />
     <Compile Include="ImageRendererChapter2.cs" />
+    <Compile Include="ImageRendererChapter8.cs" />
     <Compile Include="ImageRendererChapter7.cs" />
     <Compile Include="ImageRendererChapter6.cs" />
     <Compile Include="ImageRendererChapter5.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Ray.cs" />
     <Compile Include="Point3.cs" />
     <Compile Include="Sphere.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="Vector3.cs" />
   </ItemGroup>
   <ItemGroup>

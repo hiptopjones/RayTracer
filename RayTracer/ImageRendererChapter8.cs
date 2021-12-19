@@ -7,19 +7,70 @@ using System.Threading.Tasks;
 
 namespace RayTracer
 {
-    // Ray Tracing In One Weekend, Chapter 7
-    class ImageRendererChapter7
+    // Ray Tracing In One Weekend, Chapter 8
+    class ImageRendererChapter8
     {
         private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
 
         private Random Random { get; } = new Random();
 
-        // Calculate the color for each ray based on what it hits
-        Color GetRayColor(Ray ray, HittableList world)
+        public Vector3 CreateRandomVector3(double min, double max)
         {
-            if (world.Hit(ray, 0, double.MaxValue, out Hit hit))
+            return new Vector3
             {
-                return 0.5 * new Color(hit.Normal.X + 1, hit.Normal.Y + 1, hit.Normal.Z + 1);
+                X = Utilities.Lerp(min, max, Random.NextDouble()),
+                Y = Utilities.Lerp(min, max, Random.NextDouble()),
+                Z = Utilities.Lerp(min, max, Random.NextDouble())
+            };
+        }
+
+        private Vector3 GetVectorInUnitSphere()
+        {
+            while (true)
+            {
+                Vector3 v = CreateRandomVector3(-1, 1);
+                if (v.MagnitudeSquared >= 1)
+                {
+                    continue;
+                }
+
+                return v;
+            }
+        }
+
+        private Point3 GetPointInUnitSphere()
+        {
+            return Point3.Origin + GetVectorInUnitSphere();
+        }
+
+        private Point3 GetPointOnUnitSphere()
+        {
+            return Point3.Origin + GetVectorInUnitSphere().Normalized;
+        }
+
+        private Point3 GetPointInHemisphere(Vector3 normal)
+        {
+            Vector3 v = GetVectorInUnitSphere();
+            if (Vector3.DotProduct(v, normal) < 0)
+            {
+                v = -v;
+            }
+
+            return Point3.Origin + v;
+        }
+
+        // Calculate the color for each ray based on what it hits
+        private Color GetRayColor(Ray ray, HittableList world, int maxBounceDepth)
+        {
+            if (maxBounceDepth <= 0)
+            {
+                return Color.Black;
+            }
+
+            if (world.Hit(ray, 0.001, double.MaxValue, out Hit hit))
+            {
+                Point3 target = hit.Position + hit.Normal + GetPointInHemisphere(hit.Normal);
+                return 0.5 * GetRayColor(new Ray(hit.Position, target - hit.Position), world, maxBounceDepth - 1);
             }
 
             Vector3 rayDirection = ray.Direction;
@@ -37,7 +88,8 @@ namespace RayTracer
         {
             // Image
             double aspectRatio = (double)imageWidth / imageHeight;
-            int samplesPerPixel = 100;
+            int samplesPerPixel = 20;
+            int maxBounceDepth = 20;
 
             // World
             HittableList world = new HittableList
@@ -77,10 +129,17 @@ namespace RayTracer
                         double v = (y + Random.NextDouble()) / (imageHeight - 1);
 
                         Ray ray = camera.GetRay(u, v);
-                        color += GetRayColor(ray, world);
+                        color += GetRayColor(ray, world, maxBounceDepth);
                     }
 
-                    pixels[y * imageWidth + x] = color / samplesPerPixel;
+                    color /= samplesPerPixel;
+                    pixels[y * imageWidth + x] = new Color
+                    {
+                        // Gamma-correct for gamma=2.0
+                        R = Math.Sqrt(color.R),
+                        G = Math.Sqrt(color.G),
+                        B = Math.Sqrt(color.B)
+                    };
                 }
             }
 

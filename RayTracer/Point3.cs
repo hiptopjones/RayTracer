@@ -12,6 +12,8 @@ namespace RayTracer
         public double Y { get; set; }
         public double Z { get; set; }
 
+        public readonly static Point3 Origin = new Point3();
+
         public Point3(double x, double y)
             : this(x, y, 0)
         {
